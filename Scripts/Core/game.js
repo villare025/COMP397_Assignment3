@@ -38,7 +38,13 @@ var assetData = [
     { id: "BTN_Play", src: "../../Assets/images/btnPlay.png" },
     { id: "BTN_Inst", src: "../../Assets/images/btnInstructions.png" },
     { id: "BTN_Next", src: "../../Assets/images/btnNext.png" },
-    { id: "BTN_Back", src: "../../Assets/images/btnBack.png" }
+    { id: "BTN_Back", src: "../../Assets/images/btnBack.png" },
+    { id: "Chimney", src: "../../Assets/images/chimney.png" },
+    { id: "Santa", src: "../../Assets/images/hero.png" },
+    { id: "CookiesMilk", src: "../../Assets/images/cookiesmilk.png" },
+    { id: "Presents", src: "../../Assets/images/present.png" },
+    { id: "Oogie", src: "../../Assets/images/Oogie.png" },
+    { id: "Icicles", src: "../../Assets/images/icicle.png" }
 ];
 function preload() {
     // Create a queue for assets being loaded

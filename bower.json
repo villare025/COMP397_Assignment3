@@ -1,12 +1,12 @@
 {
-  "name": "COMP397_Assignment2",
+  "name": "COMP397_Assignment3",
   "authors": [
     "Elaine Mae Villarino <evillari@my.centennialcollege.ca>"
   ],
-  "description": "COMP397 Assignment 2 - Simple Game with User Interface",
+  "description": "COMP397 Assignment 3 - A Simple Side-Scrolling Game",
   "main": "",
   "license": "MIT",
-  "homepage": "https://github.com/villare025/COMP397_Assignment2.git",
+  "homepage": "https://github.com/villare025/COMP397_Assignment3.git",
   "ignore": [
     "**/.*",
     "node_modules",

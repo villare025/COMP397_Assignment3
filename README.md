@@ -1,4 +1,4 @@
-#COMP397-Assignment2
+#COMP397-Assignment3
 
-COMP397 - Assignment 2 - Web Game Programming @ Centennial College
-Build a Simple Game with a User Interface Using CreateJS
+COMP397 - Assignment 3 - Web Game Programming @ Centennial College
+Create a Side-Scrolling Game Using CreateJS
