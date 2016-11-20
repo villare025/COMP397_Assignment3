@@ -6,7 +6,7 @@
 	Website Name:          EV - COMP397 - Assignment 3
 	Program Description:   JS file that contains the components that
                            are required to render the game's Game scene.
-    Revision History:      Add Collision 
+    Revision History:      Hide Default Mouse 
 */
 module scenes {
     export class Game extends objects.Scene {
@@ -88,7 +88,6 @@ module scenes {
                 this.addChild(this._cookiesMilk[cookiesMilk]);
             }
 
-
             // added Presents to the scene
             for (var present: number = 0; present < this._presentCount; present++) {
                 this._present[present] = new objects.Presents();
@@ -116,10 +115,6 @@ module scenes {
             this._healthGO = new objects.Label("Health: " + globalHealth.toString(), "Bold 40px Mountains of Christmas", "#000", config.Screen.CENTER_X + 50, config.Screen.CENTER_Y - 195);
             this.addChild(this._healthGO);
 
-            // Add NEXT Button to scene. Register for click callback function
-            this._next = new objects.Button("BTN_Next", 475, 400);
-            this._next.on("click", this._nextBtnClick, this);
-
             //specific names given for event handlers for callback in collision.ts
             this.on('collideOogieBoogie', this._collideOogieBoogie, this);
 
@@ -130,6 +125,9 @@ module scenes {
             this.on('collidePresentsForGoodKids', this._collidePresentsForGoodKids, this);
 
             this.on('collideItsTime', this._collideItsTime, this);
+
+            // Mousy mouse
+            stage.cursor = "none"; // Hide the default mouse cuz santa is the mouse
 
             // Add GAME scene to main stage container. 
             stage.addChild(this);
@@ -193,13 +191,6 @@ module scenes {
                 this._collision.check(this._present2, this);
             }
             //console.log(this._pseudoTimer);
-        }
-
-        // Function for when NEXT button is pressed
-        private _nextBtnClick(event: createjs.MouseEvent) {
-            // Set global variable to MENU Scene and call changescene function
-            scene = config.Scene.OVER;
-            changeScene();
         }
 
         private _collideOogieBoogie(): void {
