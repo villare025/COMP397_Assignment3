@@ -3,11 +3,11 @@
 	File Name:             Core Game - TS|JS File 
 	Author:                Elaine Mae Villarino
     Last Modified By:      Elaine Mae Villarino 
-	Last Modified Date:    Saturday, November 19th, 2016
+	Last Modified Date:    Sunday, November 20th, 2016
 	Website Name:          EV - COMP397 - Assignment 3
 	Program Description:   JS file that contains the components that 
                            are required to render the game's core.
-    Revision History:      Initial Commit
+    Revision History:      Add music
 */
 
 // Global Variables
@@ -31,7 +31,8 @@ var collectedFood: number = 0;
 
 // Preload Assets required
 var assetData: objects.Asset[] = [
-    { id: "MUSE_GAME", src: "../../Assets/audio/P3-TartarusThebelBlock.mp3" },
+    { id: "MUSE_Intro", src: "../../Assets/audio/Kumukutikutitap.mp3" },
+    { id: "MUSE_Game", src: "../../Assets/audio/SleighRide-8BitRemix.mp3" },
     { id: "BG_Title", src: "../../Assets/images/bgTitle.png" },
     { id: "BG_Instr", src: "../../Assets/images/bgInstructions.png" },
     { id: "BG_Game", src: "../../Assets/images/bgGame.png" },
@@ -44,7 +45,8 @@ var assetData: objects.Asset[] = [
     { id: "CookiesMilk", src: "../../Assets/images/cookiesmilk.png" },
     { id: "Presents", src: "../../Assets/images/present.png" },
     { id: "Oogie", src: "../../Assets/images/Oogie.png" },
-    { id: "Icicles", src: "../../Assets/images/icicle.png" }
+    { id: "Icicles", src: "../../Assets/images/icicle.png" },
+    { id: "Snowflake", src: "../../Assets/images/snowflakeS.png" }
 ];
 
 function preload() {
@@ -71,10 +73,11 @@ function init() {
     createjs.Ticker.setFPS(config.Game.FPS);
     createjs.Ticker.on("tick", this.gameLoop, this);
 
-    // Add and Play Game Music
+    // Add and Play Intro Music
     createjs.Sound.stop();
-    //var bgAll = createjs.Sound.play("MUSE_GAME");
-    //bgAll.play({ interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 1 });
+    var bgStart = createjs.Sound.play("MUSE_Intro");
+    bgStart.play({ interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 1 });
+
     // Set initial scene to MENU scene and call changeScene().
     scene = config.Scene.MENU;
     changeScene();

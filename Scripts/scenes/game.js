@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     Website Name:          EV - COMP397 - Assignment 3
     Program Description:   JS file that contains the components that
                            are required to render the game's Game scene.
-    Revision History:      Add scolling background
+    Revision History:      Add music
 */
 var scenes;
 (function (scenes) {
@@ -21,6 +21,10 @@ var scenes;
             _super.call(this);
         }
         Game.prototype.start = function () {
+            // Start Music
+            createjs.Sound.stop();
+            var bgAll = createjs.Sound.play("MUSE_Game");
+            bgAll.play({ interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 0.25 });
             // Initialize Game Values
             globalScore = 0;
             globalHealth = 500;

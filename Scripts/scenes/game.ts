@@ -6,7 +6,7 @@
 	Website Name:          EV - COMP397 - Assignment 3
 	Program Description:   JS file that contains the components that
                            are required to render the game's Game scene.
-    Revision History:      Add scolling background 
+    Revision History:      Add music 
 */
 module scenes {
     export class Game extends objects.Scene {
@@ -42,6 +42,11 @@ module scenes {
         }
 
         public start(): void {
+            // Start Music
+            createjs.Sound.stop();
+            var bgAll = createjs.Sound.play("MUSE_Game");
+            bgAll.play({ interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 0.25 });
+
             // Initialize Game Values
             globalScore = 0;
             globalHealth = 500;
