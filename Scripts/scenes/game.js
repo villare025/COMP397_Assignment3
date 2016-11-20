@@ -29,7 +29,7 @@ var scenes;
             this._moveExtraPresents = false;
             this._pseudoTimer = 500;
             this._oogieCount = 1;
-            this._iciclesCount = 4;
+            this._iciclesCount = 3;
             this._cookiesMilkCount = 2;
             this._presentCount = 1;
             // Instantiate Oogies array
@@ -41,7 +41,7 @@ var scenes;
             // Instantiate Presents array
             this._present = new Array();
             // Create BG for scene and add to Game Scene container
-            this._bg = new createjs.Bitmap(assets.getResult("BG_HangM"));
+            this._bg = new createjs.Bitmap(assets.getResult("BG_Game"));
             this.addChild(this._bg);
             // added Oogies to the scene
             for (var oogie = 0; oogie < this._oogieCount; oogie++) {

@@ -28,16 +28,19 @@ module scenes {
             // Add objects to the scene
             console.log("Game scene started");
 
-            this._bg = new createjs.Bitmap(assets.getResult("BG_Title"));
+            this._bg = new createjs.Bitmap(assets.getResult("BG_Over"));
             this.addChild(this._bg);
 
-            this._score = new objects.Label("Score: " + globalScore.toString(), "30px Mountains of Christmas", "#FFF", 125, 200);
+            this._score = new objects.Label("Score: " + globalScore.toString(), "40px Mountains of Christmas", "#000", 175, 220);
+            this._score.outline = 2;
             this.addChild(this._score);
 
-            this._scorePrevious = new objects.Label("Previous High Score: ", "30px Mountains of Christmas", "#FFF", 205, 300);
+            this._scorePrevious = new objects.Label("Previous High Score: ", "40px Mountains of Christmas", "#000", 290, 325);
+            this._scorePrevious.outline = 2;
             this.addChild(this._scorePrevious);
 
-            this._scoreNow = new objects.Label("Your High Score: " + globalScore.toString(), "30px Mountains of Christmas", "#FFF", 190, 350);
+            this._scoreNow = new objects.Label("Your High Score: " + globalScore.toString(), "40px Mountains of Christmas", "#000", 270, 375);
+            this._scoreNow.outline = 2;
             this.addChild(this._scoreNow);
 
             this._checkHighScore();

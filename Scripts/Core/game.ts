@@ -22,7 +22,7 @@ var scene: number;
 var menuScene: scenes.Menu;
 var gameScene: scenes.Game;
 
-// Set the HANGMAN variables
+// Set the SCICTT (Santa Claus Is Coming To Town) variables
 var globalScore: number = 0;
 var globalHealth: number = 0;
 
@@ -34,13 +34,13 @@ var assetData: objects.Asset[] = [
     { id: "MUSE_GAME", src: "../../Assets/audio/P3-TartarusThebelBlock.mp3" },
     { id: "BG_Title", src: "../../Assets/images/bgTitle.png" },
     { id: "BG_Instr", src: "../../Assets/images/bgInstructions.png" },
-    { id: "BG_HangM", src: "../../Assets/images/bgGame.png" },
+    { id: "BG_Game", src: "../../Assets/images/bgGame.png" },
+    { id: "BG_Over", src: "../../Assets/images/bgGameOver.png" },
     { id: "BTN_Play", src: "../../Assets/images/btnPlay.png" },
     { id: "BTN_Inst", src: "../../Assets/images/btnInstructions.png" },
-    { id: "BTN_Next", src: "../../Assets/images/btnNext.png" },
     { id: "BTN_Back", src: "../../Assets/images/btnBack.png" },
     { id: "Chimney", src: "../../Assets/images/chimney.png" },
-    { id: "Santa", src: "../../Assets/images/hero.png" },
+    { id: "Santa", src: "../../Assets/images/santa.png" },
     { id: "CookiesMilk", src: "../../Assets/images/cookiesmilk.png" },
     { id: "Presents", src: "../../Assets/images/present.png" },
     { id: "Oogie", src: "../../Assets/images/Oogie.png" },

@@ -29,11 +29,11 @@ var scenes;
             this._bg = new createjs.Bitmap(assets.getResult("BG_Instr"));
             this.addChild(this._bg);
             // Add PLAY/START Button to scene. Register for click callback function
-            this._instructionsBtnStart = new objects.Button("BTN_Play", config.Screen.CENTER_X + 150, config.Screen.CENTER_Y + 160);
+            this._instructionsBtnStart = new objects.Button("BTN_Play", config.Screen.CENTER_X + 150, config.Screen.CENTER_Y + 192);
             this.addChild(this._instructionsBtnStart);
             this._instructionsBtnStart.on("click", this._startButtonClick, this);
             // Create BACK Button for scene and add to Game Scene container. Register for onclick event
-            this._instructionsBtnBack = new objects.Button("BTN_Back", config.Screen.CENTER_X - 190, config.Screen.CENTER_Y + 160);
+            this._instructionsBtnBack = new objects.Button("BTN_Back", config.Screen.CENTER_X - 190, config.Screen.CENTER_Y + 192);
             this.addChild(this._instructionsBtnBack);
             this._instructionsBtnBack.on("click", this._onBackButtonClick, this);
             // Add INSTRUCTIIONS to main stage container. 
