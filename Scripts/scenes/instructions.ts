@@ -2,11 +2,11 @@
 	File Name:             Scene Instructions - TS|JS File 
 	Author:                Elaine Mae Villarino
     Last Modified By:      Elaine Mae Villarino 
-	Last Modified Date:    Saturday, November 19th, 2016
+	Last Modified Date:    Sunday, November 20th, 2016
 	Website Name:          EV - COMP397 - Assignment 3
 	Program Description:   JS file that contains the components that 
                            are required to render the game's Instructions scene.
-    Revision History:      Initial Commit
+    Revision History:      Update Button Placements and Instructions Background
 */
 
 module scenes {
@@ -34,12 +34,12 @@ module scenes {
             this.addChild(this._bg);
 
             // Add PLAY/START Button to scene. Register for click callback function
-            this._instructionsBtnStart = new objects.Button("BTN_Play", config.Screen.CENTER_X + 150, config.Screen.CENTER_Y + 192);
+            this._instructionsBtnStart = new objects.Button("BTN_Play", config.Screen.CENTER_X + 190, config.Screen.CENTER_Y + 198);
             this.addChild(this._instructionsBtnStart);
             this._instructionsBtnStart.on("click", this._startButtonClick, this);
 
             // Create BACK Button for scene and add to Game Scene container. Register for onclick event
-            this._instructionsBtnBack = new objects.Button("BTN_Back", config.Screen.CENTER_X - 190, config.Screen.CENTER_Y + 192);
+            this._instructionsBtnBack = new objects.Button("BTN_Back", config.Screen.CENTER_X - 250, config.Screen.CENTER_Y + 198);
             this.addChild(this._instructionsBtnBack);
             this._instructionsBtnBack.on("click", this._onBackButtonClick, this);
 
