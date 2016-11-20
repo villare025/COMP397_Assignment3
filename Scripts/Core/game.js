@@ -66,8 +66,8 @@ function init() {
     createjs.Ticker.on("tick", this.gameLoop, this);
     // Add and Play Game Music
     createjs.Sound.stop();
-    var bgAll = createjs.Sound.play("MUSE_GAME");
-    bgAll.play({ interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 1 });
+    //var bgAll = createjs.Sound.play("MUSE_GAME");
+    //bgAll.play({ interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 1 });
     // Set initial scene to MENU scene and call changeScene().
     scene = config.Scene.MENU;
     changeScene();

@@ -32,7 +32,7 @@ var objects;
             }
         };
         Oogie.prototype._reset = function (value) {
-            this._speed.y = Math.floor(Math.random() * 5) + 5;
+            this._speed.y = Math.floor(Math.random() * 0) + 5;
             this._speed.x = Math.floor(Math.random() * 4) - 2;
             this.y = value;
             this.x = Math.floor(Math.random() * this._rightBounds) + this._leftBounds;

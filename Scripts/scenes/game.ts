@@ -6,7 +6,7 @@
 	Website Name:          EV - COMP397 - Assignment 3
 	Program Description:   JS file that contains the components that
                            are required to render the game's Game scene.
-    Revision History:      Add Santa, OOGIES, and chimney
+    Revision History:      Add CookiesMilk, Presents, and Chimney Timer 
 */
 module scenes {
     export class Game extends objects.Scene {
@@ -20,6 +20,19 @@ module scenes {
         private _santa: objects.Santa;
         private _oogie: objects.Oogie[];
         private _oogieCount: number;
+        private _icicles: objects.Icicles[];
+        private _iciclesCount: number;
+        private _cookiesMilk: objects.CookiesMilk[];
+        private _cookiesMilkCount: number;
+        private _present2: objects.Presents;
+        private _present: objects.Presents[];
+        private _presentCount: number;
+
+        private _pseudoTimer: number;
+        private _moveExtraPresents: boolean;
+
+        private _endTimer: number;
+        private _moveChimney: boolean;
 
         constructor() {
             super();
@@ -27,10 +40,26 @@ module scenes {
 
         public start(): void {
             // Initialize Game Values
-            this._oogieCount = 5;
+            this._moveChimney = false;
+            this._endTimer = 2000;
+            this._moveExtraPresents = false;
+            this._pseudoTimer = 500;
+            this._oogieCount = 1;
+            this._iciclesCount = 4;
+            this._cookiesMilkCount = 2;
+            this._presentCount = 1;
 
-            // Instantiate Blimp array
+            // Instantiate Oogies array
             this._oogie = new Array<objects.Oogie>();
+
+            // Instantiate Icicles array
+            this._icicles = new Array<objects.Icicles>();
+
+            // Instantiate CookiesMilk array
+            this._cookiesMilk = new Array<objects.CookiesMilk>();
+
+            // Instantiate Presents array
+            this._present = new Array<objects.Presents>();
 
             // Create BG for scene and add to Game Scene container
             this._bg = new createjs.Bitmap(assets.getResult("BG_HangM"));
@@ -42,6 +71,27 @@ module scenes {
                 this.addChild(this._oogie[oogie]);
             }
 
+            // added Icicles to the scene
+            for (var icicle: number = 0; icicle < this._iciclesCount; icicle++) {
+                this._icicles[icicle] = new objects.Icicles();
+                this.addChild(this._icicles[icicle]);
+            }
+
+            // added CookiesMilk to the scene
+            for (var cookiesMilk: number = 0; cookiesMilk < this._cookiesMilkCount; cookiesMilk++) {
+                this._cookiesMilk[cookiesMilk] = new objects.CookiesMilk();
+                this.addChild(this._cookiesMilk[cookiesMilk]);
+            }
+
+
+            // added Presents to the scene
+            for (var present: number = 0; present < this._presentCount; present++) {
+                this._present[present] = new objects.Presents();
+                this.addChild(this._present[present]);
+            }
+            this._present2 = new objects.Presents();
+            this.addChild(this._present2);
+
             // added santa to the scene
             this._santa = new objects.Santa();
             this.addChild(this._santa);
@@ -49,7 +99,7 @@ module scenes {
             // added chimney to the scene
             this._chimney = new objects.Chimney();
             this.addChild(this._chimney);
-            
+
 
             // Add SCORE Label to scene.
             this._scoreGO = new objects.Label("Score: " + globalScore.toString(), "20px Special Elite", "#000", config.Screen.CENTER_X - 225, 50);
@@ -68,14 +118,51 @@ module scenes {
         public update(): void {
             this._santa.update();
 
-            this._chimney.update();
+
+            this._endTimer--;
+                console.log(this._endTimer);
+            
+            if (this._endTimer == 0) {
+                this._moveChimney = true;
+                console.log("true")
+            }
+
+            if (this._moveChimney) {
+                this._chimney.update();
+
+            }
 
             this._oogie.forEach(oogie => {
                 oogie.update();
             });
 
+            this._icicles.forEach(icicle => {
+                icicle.update();
+            });
+
+            this._cookiesMilk.forEach(cookiesMilk => {
+                cookiesMilk.update();
+            });
+
+            this._present.forEach(present => {
+                present.update();
+            });
+
+            //this._present2.update();
+
             // Update Score
             this._scoreGO.text = "Score: " + globalScore.toString();
+
+            this._pseudoTimer--;
+            if (this._pseudoTimer == 0) {
+                this._moveExtraPresents = true;
+                this._pseudoTimer = 500;
+            }
+
+            if (this._moveExtraPresents) {
+                this._present2.update();
+            }
+            //console.log(this._pseudoTimer);
         }
 
         // Function for when NEXT button is pressed

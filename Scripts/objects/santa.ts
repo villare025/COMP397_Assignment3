@@ -20,7 +20,7 @@ module objects {
         // Public Instance Variables
         public width: number;
         public height: number;
-        
+
         // Constructor Method
         constructor() {
             super(assets.getResult("Santa"));
@@ -49,11 +49,11 @@ module objects {
             if (this.x > this._rightBounds) {
                 this.x = this._rightBounds;
             }
-            
+
             if (this.y < this._topBounds) {
                 this.y = this._topBounds;
             }
-            
+
             if (this.y > this._bottomBounds) {
                 this.y = this._bottomBounds;
             }

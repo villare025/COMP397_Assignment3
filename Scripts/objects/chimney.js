@@ -22,9 +22,9 @@ var objects;
         // Constructor Method
         function Chimney() {
             _super.call(this, "Chimney");
-            this._speed.x = -1;
-            this.name = "chimney";
             this._reset(this._rightBounds);
+            this.name = "chimney";
+            this._speed.x = -1;
         }
         // Private Methods
         Chimney.prototype._checkBounds = function (value) {
