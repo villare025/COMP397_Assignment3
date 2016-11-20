@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     Website Name:          EV - COMP397 - Assignment 3
     Program Description:   JS file that contains the components that
                            are required to render the game's Game scene.
-    Revision History:      Add music
+    Revision History:      Fix UI ( Health and Score) Colors and Blur Scolling Image
 */
 var scenes;
 (function (scenes) {
@@ -50,6 +50,12 @@ var scenes;
             // Create SCROLLING BG for scene and add to Game Scene container
             this._background = new objects.Background();
             this.addChild(this._background);
+            // Blur the Background Image
+            var blurFilter = new createjs.BlurFilter(2, 2, 1);
+            this._background.filters = [blurFilter];
+            var bounds = blurFilter.getBounds();
+            // Blur EVERYTHING in the image
+            this._background.cache(bounds.x, bounds.y, 3236 + bounds.width, 480 + bounds.height);
             // added Oogies to the scene
             for (var oogie = 0; oogie < this._oogieCount; oogie++) {
                 this._oogie[oogie] = new objects.Oogie();
@@ -81,10 +87,10 @@ var scenes;
             this._chimney = new objects.Chimney();
             this.addChild(this._chimney);
             // Add SCORE Label to scene.
-            this._scoreGO = new objects.Label("Score: " + globalScore.toString(), "Bold 40px Mountains of Christmas", "#000", config.Screen.CENTER_X - 225, 45);
+            this._scoreGO = new objects.Label("Score: " + globalScore.toString(), "Bold 40px Mountains of Christmas", "#FFF", config.Screen.CENTER_X - 225, 45);
             this.addChild(this._scoreGO);
             // Add HEALTH Label to scene.
-            this._healthGO = new objects.Label("Health: " + globalHealth.toString(), "Bold 40px Mountains of Christmas", "#000", config.Screen.CENTER_X + 50, config.Screen.CENTER_Y - 195);
+            this._healthGO = new objects.Label("Health: " + globalHealth.toString(), "Bold 40px Mountains of Christmas", "#FFF", config.Screen.CENTER_X + 50, config.Screen.CENTER_Y - 195);
             this.addChild(this._healthGO);
             //specific names given for event handlers for callback in collision.ts
             this.on('collideOogieBoogie', this._collideOogieBoogie, this);
