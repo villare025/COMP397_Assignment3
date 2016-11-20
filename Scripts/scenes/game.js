@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     Website Name:          EV - COMP397 - Assignment 3
     Program Description:   JS file that contains the components that
                            are required to render the game's Game scene.
-    Revision History:      Fix UI ( Health and Score) Colors and Blur Scolling Image
+    Revision History:      Make Oogie steal points
 */
 var scenes;
 (function (scenes) {
@@ -154,6 +154,7 @@ var scenes;
         Game.prototype._collideOogieBoogie = function () {
             console.log("Hit Oogie Boogie...");
             globalHealth--;
+            globalScore -= 10;
             // END GAME
             if (globalHealth == 0) {
                 scene = config.Scene.OVER;
