@@ -7,7 +7,7 @@
 	Website Name:          EV - COMP397 - Assignment 3
 	Program Description:   JS file that contains the components that 
                            are required to render the game's core.
-    Revision History:      Add music
+    Revision History:      Add menu button
 */
 
 // Global Variables
@@ -40,6 +40,7 @@ var assetData: objects.Asset[] = [
     { id: "BTN_Play", src: "../../Assets/images/btnPlay.png" },
     { id: "BTN_Inst", src: "../../Assets/images/btnInstructions.png" },
     { id: "BTN_Back", src: "../../Assets/images/btnBack.png" },
+    { id: "BTN_Menu", src: "../../Assets/images/btnMenu.png" },
     { id: "Chimney", src: "../../Assets/images/chimney.png" },
     { id: "Santa", src: "../../Assets/images/santa.png" },
     { id: "CookiesMilk", src: "../../Assets/images/cookiesmilk.png" },
@@ -116,6 +117,7 @@ function changeScene(): void {
     }
 
 }
+
 // Check for Local Storage
 function isLocalStorageWorking() {
     try {

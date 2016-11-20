@@ -2,11 +2,11 @@
 	File Name:             Scene Game Over - TS|JS File 
 	Author:                Elaine Mae Villarino
     Last Modified By:      Elaine Mae Villarino 
-	Last Modified Date:    Saturday, November 19th, 2016
+	Last Modified Date:    Sunday, November 20th, 2016
 	Website Name:          EV - COMP397 - Assignment 3
 	Program Description:   JS file that contains the components that
                            are required to render the game's Game Over scene.
-    Revision History:      Initial Commit
+    Revision History:      Add Replay - return to menu, and bring back the mouse
 */
 
 module scenes {
@@ -17,6 +17,7 @@ module scenes {
         private _score: objects.Label;
         private _scorePrevious: objects.Label;
         private _scoreNow: objects.Label;
+        private _againBtnMenu: objects.Button;
 
         // CONSTRUCTOR
         constructor() {
@@ -44,15 +45,25 @@ module scenes {
             this.addChild(this._scoreNow);
 
             this._checkHighScore();
+            
+            // Add MENU/REPLAY Button to scene. Register for click callback function
+            this._againBtnMenu = new objects.Button("BTN_Menu", config.Screen.CENTER_X, config.Screen.CENTER_Y + 190);
+            this.addChild(this._againBtnMenu);
+            this._againBtnMenu.on("click", this._menuButtonClick, this);
+
+            // Mousy mouse
+            stage.cursor = "arrow"; // Bring back the mouse cuz santa has arrived
 
             // Add GAME OVER scene to main stage container. 
             stage.addChild(this);
         }
 
+        // Run on every tick
         public update(): void {
             // Update objects
         }
 
+        // Function to check Player HighScore
         private _checkHighScore() {
             console.log("Food: " + collectedFood);
             console.log("Presents: " + collectedPresents);
@@ -73,6 +84,12 @@ module scenes {
                     this._score.text = "You have not beaten the highscore!";
                 }
             }
+        }
+        // Function for when MENU/REPLAY button is pressed
+        private _menuButtonClick(event: createjs.MouseEvent) {
+            // Change global scene variable to MENU. Call global changeScene() function
+            scene = config.Scene.MENU;
+            changeScene();
         }
     }
 }
