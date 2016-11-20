@@ -11,6 +11,7 @@
 /// <reference path="../objects/oogie.ts" />
 /// <reference path="../objects/presents.ts" />
 /// <reference path="../objects/santa.ts" />
+/// <reference path="../reactions/collision.ts" />
 /// <reference path="../scenes/menu.ts" />
 /// <reference path="../scenes/instructions.ts" />
 /// <reference path="../scenes/game.ts" />

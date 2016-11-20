@@ -20,15 +20,9 @@ var menuScene;
 var gameScene;
 // Set the HANGMAN variables
 var globalScore = 0;
-var wrongAnswers = 0;
-var rightAnswers = 0;
-var totalCorrect = 0;
-var totalWrong = 0;
-var previousGuesses;
-var currentWordArray;
-var keyPressed = false;
-var keyToPass = "";
-var waitingForNext = false;
+var globalHealth = 0;
+var collectedPresents = 0;
+var collectedFood = 0;
 // Preload Assets required
 var assetData = [
     { id: "MUSE_GAME", src: "../../Assets/audio/P3-TartarusThebelBlock.mp3" },

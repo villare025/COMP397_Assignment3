@@ -7,6 +7,7 @@
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/scene.ts" />
 
+
 /// <reference path="../objects/gameobject.ts" />
 /// <reference path="../objects/chimney.ts" />
 /// <reference path="../objects/cookiesmilk.ts" />
@@ -14,6 +15,8 @@
 /// <reference path="../objects/oogie.ts" />
 /// <reference path="../objects/presents.ts" />
 /// <reference path="../objects/santa.ts" />
+
+/// <reference path="../reactions/collision.ts" />
 
 /// <reference path="../scenes/menu.ts" />
 /// <reference path="../scenes/instructions.ts" />

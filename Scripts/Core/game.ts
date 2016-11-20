@@ -24,17 +24,10 @@ var gameScene: scenes.Game;
 
 // Set the HANGMAN variables
 var globalScore: number = 0;
-var wrongAnswers: number = 0;
-var rightAnswers: number = 0;
-var totalCorrect: number = 0;
-var totalWrong: number = 0;
+var globalHealth: number = 0;
 
-var previousGuesses: string[];
-var currentWordArray: string[];
-
-var keyPressed: boolean = false;
-var keyToPass: string = "";
-var waitingForNext: boolean = false;
+var collectedPresents: number = 0;
+var collectedFood: number = 0;
 
 // Preload Assets required
 var assetData: objects.Asset[] = [

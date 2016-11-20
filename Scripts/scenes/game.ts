@@ -6,7 +6,7 @@
 	Website Name:          EV - COMP397 - Assignment 3
 	Program Description:   JS file that contains the components that
                            are required to render the game's Game scene.
-    Revision History:      Add CookiesMilk, Presents, and Chimney Timer 
+    Revision History:      Add Collision 
 */
 module scenes {
     export class Game extends objects.Scene {
@@ -16,8 +16,10 @@ module scenes {
 
         // GO (game object)
         private _scoreGO: objects.Label;
+        private _healthGO: objects.Label;
         private _chimney: objects.Chimney;
         private _santa: objects.Santa;
+        private _collision: reactions.Collision;
         private _oogie: objects.Oogie[];
         private _oogieCount: number;
         private _icicles: objects.Icicles[];
@@ -40,6 +42,9 @@ module scenes {
 
         public start(): void {
             // Initialize Game Values
+            globalScore = 0;
+            globalHealth = 500;
+
             this._moveChimney = false;
             this._endTimer = 2000;
             this._moveExtraPresents = false;
@@ -96,19 +101,35 @@ module scenes {
             this._santa = new objects.Santa();
             this.addChild(this._santa);
 
+            // added collision reaction to the scene
+            this._collision = new reactions.Collision(this._santa);
+
             // added chimney to the scene
             this._chimney = new objects.Chimney();
             this.addChild(this._chimney);
 
-
             // Add SCORE Label to scene.
-            this._scoreGO = new objects.Label("Score: " + globalScore.toString(), "20px Special Elite", "#000", config.Screen.CENTER_X - 225, 50);
+            this._scoreGO = new objects.Label("Score: " + globalScore.toString(), "Bold 40px Mountains of Christmas", "#000", config.Screen.CENTER_X - 225, 45);
             this.addChild(this._scoreGO);
+
+            // Add HEALTH Label to scene.
+            this._healthGO = new objects.Label("Health: " + globalHealth.toString(), "Bold 40px Mountains of Christmas", "#000", config.Screen.CENTER_X + 50, config.Screen.CENTER_Y - 195);
+            this.addChild(this._healthGO);
 
             // Add NEXT Button to scene. Register for click callback function
             this._next = new objects.Button("BTN_Next", 475, 400);
             this._next.on("click", this._nextBtnClick, this);
 
+            //specific names given for event handlers for callback in collision.ts
+            this.on('collideOogieBoogie', this._collideOogieBoogie, this);
+
+            this.on('collideIcyIcicles', this._collideIcyIcicles, this);
+
+            this.on('collideFoodForSanta', this._collideFoodForSanta, this);
+
+            this.on('collidePresentsForGoodKids', this._collidePresentsForGoodKids, this);
+
+            this.on('collideItsTime', this._collideItsTime, this);
 
             // Add GAME scene to main stage container. 
             stage.addChild(this);
@@ -120,8 +141,8 @@ module scenes {
 
 
             this._endTimer--;
-                console.log(this._endTimer);
-            
+            console.log(this._endTimer);
+
             if (this._endTimer == 0) {
                 this._moveChimney = true;
                 console.log("true")
@@ -129,31 +150,39 @@ module scenes {
 
             if (this._moveChimney) {
                 this._chimney.update();
-
+                this._collision.check(this._chimney, this);
             }
 
             this._oogie.forEach(oogie => {
                 oogie.update();
+                this._collision.check(oogie, this);
             });
 
             this._icicles.forEach(icicle => {
                 icicle.update();
+                this._collision.check(icicle, this);
             });
 
             this._cookiesMilk.forEach(cookiesMilk => {
                 cookiesMilk.update();
+                this._collision.check(cookiesMilk, this);
             });
 
             this._present.forEach(present => {
                 present.update();
+                this._collision.check(present, this);
             });
-
-            //this._present2.update();
 
             // Update Score
             this._scoreGO.text = "Score: " + globalScore.toString();
 
-            this._pseudoTimer--;
+            // Update Health
+            this._healthGO.text = "Health: " + globalHealth.toString();
+
+            if (this._pseudoTimer >= 0) {
+                this._pseudoTimer--;
+            }
+
             if (this._pseudoTimer == 0) {
                 this._moveExtraPresents = true;
                 this._pseudoTimer = 500;
@@ -161,6 +190,7 @@ module scenes {
 
             if (this._moveExtraPresents) {
                 this._present2.update();
+                this._collision.check(this._present2, this);
             }
             //console.log(this._pseudoTimer);
         }
@@ -168,6 +198,43 @@ module scenes {
         // Function for when NEXT button is pressed
         private _nextBtnClick(event: createjs.MouseEvent) {
             // Set global variable to MENU Scene and call changescene function
+            scene = config.Scene.OVER;
+            changeScene();
+        }
+
+        private _collideOogieBoogie(): void {
+            console.log("Hit Oogie Boogie...");
+            globalHealth--;
+            // END GAME
+            if (globalHealth == 0) {
+                scene = config.Scene.OVER;
+                changeScene();
+            }
+        }
+
+        private _collideIcyIcicles(): void {
+            console.log("Hit Icy Icicles...");
+            globalHealth--;
+            // END GAME
+            if (globalHealth == 0) {
+                scene = config.Scene.OVER;
+                changeScene();
+            }
+        }
+
+        private _collideFoodForSanta(): void {
+            console.log("Collecting Santa's Favourites...");
+            globalScore += 50;
+        }
+
+        private _collidePresentsForGoodKids(): void {
+            console.log("Collecting presents...");
+            globalScore += 100;
+        }
+
+        private _collideItsTime(): void {
+            console.log("INTO the chimney...");
+            globalScore += 200;
             scene = config.Scene.OVER;
             changeScene();
         }
