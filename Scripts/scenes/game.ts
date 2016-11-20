@@ -2,11 +2,11 @@
 	File Name:             Scene Game - TS|JS File 
 	Author:                Elaine Mae Villarino
     Last Modified By:      Elaine Mae Villarino 
-	Last Modified Date:    Saturday, November 19th, 2016
+	Last Modified Date:    Sunday, November 20th, 2016
 	Website Name:          EV - COMP397 - Assignment 3
 	Program Description:   JS file that contains the components that
                            are required to render the game's Game scene.
-    Revision History:      Hide Default Mouse 
+    Revision History:      Add scolling background 
 */
 module scenes {
     export class Game extends objects.Scene {
@@ -15,6 +15,7 @@ module scenes {
         private _next: objects.Button;
 
         // GO (game object)
+        private _background: objects.Background;
         private _scoreGO: objects.Label;
         private _healthGO: objects.Label;
         private _chimney: objects.Chimney;
@@ -69,6 +70,10 @@ module scenes {
             // Create BG for scene and add to Game Scene container
             this._bg = new createjs.Bitmap(assets.getResult("BG_Game"));
             this.addChild(this._bg);
+            
+            // Create SCROLLING BG for scene and add to Game Scene container
+            this._background = new objects.Background();
+            this.addChild(this._background);
 
             // added Oogies to the scene
             for (var oogie: number = 0; oogie < this._oogieCount; oogie++) {
@@ -135,6 +140,7 @@ module scenes {
 
         // Run on every tick
         public update(): void {
+            this._background.update();
             this._santa.update();
 
 

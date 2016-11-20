@@ -5,6 +5,7 @@
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/scene.ts" />
 /// <reference path="../objects/gameobject.ts" />
+/// <reference path="../objects/background.ts" />
 /// <reference path="../objects/chimney.ts" />
 /// <reference path="../objects/cookiesmilk.ts" />
 /// <reference path="../objects/icicles.ts" />
