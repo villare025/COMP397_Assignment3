@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     Website Name:          EV - COMP397 - Assignment 3
     Program Description:   TS/JS file that contains the components that
                            are required to render the game's GameObject object.
-    Revision History:      Clean up and add more comments
+    Revision History:      Add last of the comments
 */
 var objects;
 (function (objects) {
@@ -19,34 +19,38 @@ var objects;
         __extends(GameObject, _super);
         // Constructor Method
         function GameObject(bitmapString) {
-            _super.call(this, assets.getResult(bitmapString));
-            this._speed = new createjs.Point(0, 0);
-            this.width = this.getBounds().width;
-            this.height = this.getBounds().height;
-            this.centerX = this.width * 0.5;
-            this.centerY = this.height * 0.5;
-            this._boundsUp = -this.height;
-            this._boundsDown = config.Screen.HEIGHT - this.height;
-            this._boundsLeft = 0;
-            this._boundsRight = config.Screen.WIDTH + this.width;
+            // Initialize Object Values
+            _super.call(this, assets.getResult(bitmapString)); // Set GO image
+            this._speed = new createjs.Point(0, 0); // Add movement speed
+            this.width = this.getBounds().width; // get bounds width of object
+            this.height = this.getBounds().height; // get bounds height of object
+            this.centerX = this.width * 0.5; // get the X center through the width of object
+            this.centerY = this.height * 0.5; // get the y center through the width of object
+            // Figure the bounds of the image
+            this._boundsUp = -this.height; // Up Bound
+            this._boundsDown = config.Screen.HEIGHT - this.height; // Down Bound
+            this._boundsLeft = 0; // Left Bound
+            this._boundsRight = config.Screen.WIDTH + this.width; // Right Bound
         }
         // Private Methods
         GameObject.prototype._boundsCheck = function (value) {
             var _repeatVal = 0;
-            // check if y value has met the repeat criteria
+            // Check if alue has met the repeat criteria
             if (this.x >= value) {
                 this._repeat(_repeatVal);
             }
         };
-        // Repeat Object Off Screen
+        // Repeat Object Off the Screen 
+        // -- Looping magic
         GameObject.prototype._repeat = function (value) {
             this.x = value;
         };
         // Public Methods
         GameObject.prototype.update = function () {
             var _boundsVal = 0;
-            // Scroll Object Per Frame
+            // Move Object Per Frame via its speed x
             this.x += this._speed.x;
+            // Always check the bounds of the object
             this._boundsCheck(_boundsVal);
         };
         return GameObject;
