@@ -6,7 +6,7 @@
 	Website Name:          EV - COMP397 - Assignment 3
 	Program Description:   JS file that contains the components that
                            are required to render the game's Game Over scene.
-    Revision History:      Add Replay - return to menu, and bring back the mouse
+    Revision History:      Clean up and add more comments 
 */
 
 module scenes {
@@ -29,21 +29,26 @@ module scenes {
             // Add objects to the scene
             console.log("Game scene started");
 
+            // Create BG for scene and add to Game Scene container
             this._bg = new createjs.Bitmap(assets.getResult("BG_Over"));
             this.addChild(this._bg);
 
-            this._score = new objects.Label("Score: " + globalScore.toString(), "40px Mountains of Christmas", "#000", 175, 220);
+            // Create SCORE TITLE Label for scene and add to Game Scene container
+            this._score = new objects.Label("Score", "40px Mountains of Christmas", "#000", 175, 220);
             this._score.outline = 2;
             this.addChild(this._score);
 
+            // Create PREVIOUS ACHIEVED SCORE Label for scene and add to Game Scene container
             this._scorePrevious = new objects.Label("Previous High Score: ", "40px Mountains of Christmas", "#000", 290, 325);
             this._scorePrevious.outline = 2;
             this.addChild(this._scorePrevious);
 
+            // Create CURRENT ACHIEVED SCORE Label for scene and add to Game Scene container
             this._scoreNow = new objects.Label("Your High Score: " + globalScore.toString(), "40px Mountains of Christmas", "#000", 270, 375);
             this._scoreNow.outline = 2;
             this.addChild(this._scoreNow);
 
+            // Check Player's Highscore Standings
             this._checkHighScore();
             
             // Add MENU/REPLAY Button to scene. Register for click callback function
@@ -51,7 +56,7 @@ module scenes {
             this.addChild(this._againBtnMenu);
             this._againBtnMenu.on("click", this._menuButtonClick, this);
 
-            // Mousy mouse
+            // Return Mousy mouse
             stage.cursor = "arrow"; // Bring back the mouse cuz santa has arrived
 
             // Add GAME OVER scene to main stage container. 

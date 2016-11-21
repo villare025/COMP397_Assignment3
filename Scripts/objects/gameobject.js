@@ -7,11 +7,11 @@ var __extends = (this && this.__extends) || function (d, b) {
     File Name:             GameObject Object - TS|JS File
     Author:                Elaine Mae Villarino
     Last Modified By:      Elaine Mae Villarino
-    Last Modified Date:    Saturday, November 19th, 2016
+    Last Modified Date:    Sunday, November 20th, 2016
     Website Name:          EV - COMP397 - Assignment 3
     Program Description:   TS/JS file that contains the components that
                            are required to render the game's GameObject object.
-    Revision History:      Initial Commit
+    Revision History:      Clean up and add more comments
 */
 var objects;
 (function (objects) {
@@ -25,29 +25,29 @@ var objects;
             this.height = this.getBounds().height;
             this.centerX = this.width * 0.5;
             this.centerY = this.height * 0.5;
-            this._topBounds = -this.height;
-            this._bottomBounds = config.Screen.HEIGHT - this.height;
-            this._leftBounds = 0;
-            this._rightBounds = config.Screen.WIDTH + this.width;
+            this._boundsUp = -this.height;
+            this._boundsDown = config.Screen.HEIGHT - this.height;
+            this._boundsLeft = 0;
+            this._boundsRight = config.Screen.WIDTH + this.width;
         }
         // Private Methods
-        GameObject.prototype._checkBounds = function (value) {
-            var resetValue = 0;
-            // check if y value has met the reset criteria
+        GameObject.prototype._boundsCheck = function (value) {
+            var _repeatVal = 0;
+            // check if y value has met the repeat criteria
             if (this.x >= value) {
-                this._reset(resetValue);
+                this._repeat(_repeatVal);
             }
         };
-        // Reset Object Off Screen
-        GameObject.prototype._reset = function (value) {
+        // Repeat Object Off Screen
+        GameObject.prototype._repeat = function (value) {
             this.x = value;
         };
         // Public Methods
         GameObject.prototype.update = function () {
-            var boundValue = 0;
+            var _boundsVal = 0;
             // Scroll Object Per Frame
             this.x += this._speed.x;
-            this._checkBounds(boundValue);
+            this._boundsCheck(_boundsVal);
         };
         return GameObject;
     }(createjs.Bitmap));

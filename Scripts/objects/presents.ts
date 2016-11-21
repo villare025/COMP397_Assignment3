@@ -2,11 +2,11 @@
 	File Name:             Presents Object - TS|JS File 
 	Author:                Elaine Mae Villarino
     Last Modified By:      Elaine Mae Villarino
-	Last Modified Date:    Saturday, November 19th, 2016
+	Last Modified Date:    Sunday, November 20th, 2016
 	Website Name:          EV - COMP397 - Assignment 3
 	Program Description:   TS/JS file that contains the components that
                            are required to render the game's Presents (Friend) object.
-    Revision History:      Initial Commit
+    Revision History:      Clean up and add more comments 
 */
 module objects {
 	// Class = PRESENTS 
@@ -17,28 +17,27 @@ module objects {
 		constructor() {
 			super("Presents");
 
-			this._reset(this._rightBounds);
+			this._repeat(this._boundsRight);
 			
 			this.name = "presents";
 			this._speed.x = -4;
 		}
 
 		// Private Methods
-		protected _checkBounds(value: number): void {
+		protected _boundsCheck(value: number): void {
 			if (this.x <= value) {
-				this._reset(this._rightBounds);
+				this._repeat(this._boundsRight);
 			}
 		}
-
-		protected _reset(value: number): void {
+		protected _repeat(value: number): void {
 			this.x = Math.floor(Math.random() + (2 * value));
-			this.y = Math.floor(Math.random() * this._bottomBounds);
+			this.y = Math.floor(Math.random() * this._boundsDown);
 		}
-
 		// Public Methods
 		public update(): void {
+            // Moves right to left
 			this.x += this._speed.x;
-			this._checkBounds(this._leftBounds);
+			this._boundsCheck(this._boundsLeft);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 	Website Name:          EV - COMP397 - Assignment 3
 	Program Description:   TS/JS file that contains the components that
                            are required to render the game's Snowflakes (fancy effect) object.
-    Revision History:      Initial Commit
+    Revision History:      Clean up and add more comments 
 */
 module objects {
 	// Class = SNOWFLAKES 
@@ -17,32 +17,30 @@ module objects {
 		constructor() {
 			super("Snowflake");
 
-			this._reset(this._topBounds);
+			this._repeat(this._boundsUp);
             
 			this.name = "snowflake";
 		}
 
 		// Private Methods
-		protected _checkBounds(value: number): void {
+		protected _boundsCheck(value: number): void {
 			if (this.y >= value) {
-				this._reset(this._topBounds);
+				this._repeat(this._boundsUp);
 			}
 		}
-
-		protected _reset(value: number): void {
+		protected _repeat(value: number): void {
 			this._speed.y = Math.floor(Math.random() * 0) + 5;
 			this._speed.x = Math.floor(Math.random() * 4) - 2;
 
 			this.y = value;
-			this.x = Math.floor(Math.random() * this._rightBounds) + this._leftBounds;
+			this.x = Math.floor(Math.random() * this._boundsRight) + this._boundsLeft;
 		}
-
-
 		// Public Methods
 		public update(): void {
+            // Moves up to down 
 			this.y += this._speed.y;
 			this.x += this._speed.x;
-			this._checkBounds(this._bottomBounds);
+			this._boundsCheck(this._boundsDown);
 		}
 	}
 }

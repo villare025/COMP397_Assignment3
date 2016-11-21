@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     Website Name:          EV - COMP397 - Assignment 3
     Program Description:   TS/JS file that contains the components that
                            are required to render the game's Background (scrolling) object.
-    Revision History:      Initial Commit
+    Revision History:      Clean up and add more comments
 */
 var objects;
 (function (objects) {
@@ -22,25 +22,26 @@ var objects;
         // Constructor Method
         function Background() {
             _super.call(this, "BG_Game");
-            this._reset(0);
+            this._repeat(0);
             this.name = "background";
-            // If Speed.x = -1,  loops once.
+            // If _speed.x = -1,  loops once.
             // move slower, so image doesn't "loop" before the chimney/end shows update
             this._speed.x = -0.65;
         }
         // Private Methods
-        Background.prototype._checkBounds = function (value) {
+        Background.prototype._boundsCheck = function (value) {
             if (this.x <= -2600) {
-                this._reset(0);
+                this._repeat(0);
             }
         };
-        Background.prototype._reset = function (value) {
+        Background.prototype._repeat = function (value) {
             this.x = 0;
         };
         // Public Methods
         Background.prototype.update = function () {
+            // Moves right to left
             this.x += this._speed.x;
-            this._checkBounds(this._leftBounds);
+            this._boundsCheck(this._boundsLeft);
         };
         return Background;
     }(objects.GameObject));

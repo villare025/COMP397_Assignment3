@@ -7,11 +7,11 @@ var __extends = (this && this.__extends) || function (d, b) {
     File Name:             Chimney Object - TS|JS File
     Author:                Elaine Mae Villarino
     Last Modified By:      Elaine Mae Villarino
-    Last Modified Date:    Saturday, November 19th, 2016
+    Last Modified Date:    Sunday, November 20th, 2016
     Website Name:          EV - COMP397 - Assignment 3
     Program Description:   TS/JS file that contains the components that
                            are required to render the game's Chimney (End Goal) object.
-    Revision History:      Initial Commit
+    Revision History:      Clean up and add more comments
 */
 var objects;
 (function (objects) {
@@ -22,27 +22,29 @@ var objects;
         // Constructor Method
         function Chimney() {
             _super.call(this, "Chimney");
-            this._reset(this._rightBounds);
+            this._repeat(this._boundsRight);
             this.name = "chimney";
             this._speed.x = -1;
         }
         // Private Methods
-        Chimney.prototype._checkBounds = function (value) {
+        Chimney.prototype._boundsCheck = function (value) {
             if (this.x <= value) {
-                this._reset(this._rightBounds);
+                this._repeat(this._boundsRight);
             }
         };
-        Chimney.prototype._reset = function (value) {
+        Chimney.prototype._repeat = function (value) {
             this.x = 2 * value;
-            this.y = Math.floor(Math.random() * this._bottomBounds);
-            // Test END SCENE Trigger
+            this.y = Math.floor(Math.random() * this._boundsDown);
+            // END SCENE Trigger
+            // -- So game is finite
             scene = config.Scene.OVER;
             changeScene();
         };
         // Public Methods
         Chimney.prototype.update = function () {
+            // Moves right to left
             this.x += this._speed.x;
-            this._checkBounds(this._leftBounds);
+            this._boundsCheck(this._boundsLeft);
         };
         return Chimney;
     }(objects.GameObject));
